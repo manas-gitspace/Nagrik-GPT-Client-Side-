@@ -2,18 +2,25 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-export default defineConfig({
-  base: "/Client-Nagrik/",
+export default defineConfig(({ command }) => {
+  const repoName = process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+    : '/Nagrik-GPT-Client-Side-/'
 
-  plugins: [react()],
+  return {
+    base: command === 'serve' ? '/' : repoName,
 
-  server: {
-    port: 5174,
-  },
+    plugins: [react()],
 
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
+    server: {
+      port: 5174,
     },
-  },
+
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
+  }
 })
+
