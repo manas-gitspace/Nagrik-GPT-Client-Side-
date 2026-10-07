@@ -20,6 +20,8 @@ Separate citizen-facing web app with local login, report submission, community u
 4. Run dev server
    - npm run dev
    - http://localhost:5174/
+5. Deployed live link
+   - https://manas-gitspace.github.io/Nagrik-GPT-Client-Side-/login
 
 ## Supabase schema
 Paste in Supabase SQL editor:
